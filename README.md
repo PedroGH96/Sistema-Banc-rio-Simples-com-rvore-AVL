@@ -1,6 +1,6 @@
 # Sistema Bancário Simples com Árvore AVL
 
-Este projeto é uma adaptação do sistema bancário original para atender aos requisitos da **Atividade da Unidade 3** da disciplina de Estruturas de Dados.
+Este projeto é uma adaptação do sistema bancário original para atender aos requisitos da **Atividade da Unidade 3** da disciplina de Estruturas de Dados 2.
 
 A principal modificação foi a substituição da estrutura de dados de armazenamento de clientes (`ArrayList`) por uma **Árvore AVL** (`AVLTree`), garantindo o balanceamento automático e a complexidade de tempo $O(\log n)$ para as operações de busca, inserção e remoção de clientes.
 
