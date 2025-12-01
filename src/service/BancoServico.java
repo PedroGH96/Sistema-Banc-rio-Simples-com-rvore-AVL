@@ -139,6 +139,18 @@ public class BancoServico implements IOperacoesBancarias {
         repositorioClientes.remover(cpf);
     }
 
+    @Override
+    public void atualizarNomeCliente(String cpf, String novoNome)
+            throws ClienteNaoEncontradoException, DadosInvalidosException {
+
+        // 1. Busca o cliente na AVL 
+        Cliente cliente = repositorioClientes.buscarPorCpf(cpf)
+                .orElseThrow(() -> new ClienteNaoEncontradoException(cpf));
+
+        // 2. Atualiza o nome 
+        cliente.setNome(novoNome);
+    }
+
     /**
      * Busca conta ou lança exceção se não encontrada.
      * Boa Prática: Método privado para evitar duplicação.

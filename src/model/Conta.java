@@ -206,4 +206,9 @@ public abstract class Conta {
         return String.format("Conta{numero=%d, tipo='%s', cliente='%s', saldo=R$ %.2f}",
                 numeroConta, getTipo(), cliente.getNome(), saldo);
     }
+
+    public final Cliente getCliente() {
+            validarInvariante();
+            return cliente;
+        }
 }

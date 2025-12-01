@@ -11,7 +11,7 @@ import java.util.Objects;
  * Boa Prática: Imutabilidade e Encapsulamento.
  */
 public final class Cliente {
-    private final String nome;
+    private String nome;
     private final String cpf;
 
     /**
@@ -111,5 +111,20 @@ public final class Cliente {
     @Override
     public String toString() {
         return String.format("Cliente{nome='%s', cpf='%s'}", nome, getCpfFormatado());
+    }
+
+    /**
+     * Permite a alteração do nome do cliente, atendendo ao requisito 'U' do CRUD.
+     * Reutiliza a validação existente para garantir a integridade.
+     * @param novoNome Novo nome do cliente.
+     */
+    public void setNome(String novoNome) throws DadosInvalidosException {
+        // Valida o novo nome antes de aplicar
+        ClienteValidator.validarNome(novoNome);
+        
+        this.nome = novoNome.trim();
+        
+        // Garante que o estado do objeto continua válido
+        validarInvariante();
     }
 }

@@ -4,7 +4,6 @@ import constants.Constantes;
 import exception.*;
 import model.Cliente;
 import model.Conta;
-import repository.IRepositorioContas;
 import service.IOperacoesBancarias;
 import service.RelatorioServico;
 
@@ -74,7 +73,8 @@ public class Menu {
         System.out.println("│ 8. Listar Contas              │");
         System.out.println("│ 9. Relatório Consolidado      │");
         System.out.println("│ 10. Remover Cliente           │");
-        System.out.println("│ 11. Visualizar AVL (Clientes) │");
+        System.out.println("│ 11. Atualizar Nome Cliente    │");
+        System.out.println("│ 12. Visualizar AVL (Clientes) │");
         System.out.println("│ 0. Sair                       │");
         System.out.println("└───────────────────────────────┘");
         System.out.print("Escolha uma opção: ");
@@ -109,7 +109,8 @@ public class Menu {
                 case 8: listarContas(); break;
                 case 9: exibirRelatorio(); break;
                 case 10: removerCliente(); break;
-                case 11: visualizarAVL(); break;
+                case 11: atualizarCliente(); break;
+                case 12: visualizarAVL(); break;
                 default: System.out.println("Opção inválida!");
             }
         } catch (Exception e) {
@@ -134,6 +135,25 @@ public class Menu {
 
         } catch (BancoException e) {
             System.out.println("Erro " + e.getMessage());
+        }
+    }
+
+    // ========== METODOS DE ATUALIZACAO ==========
+
+    private void atualizarCliente() {
+        System.out.println("\n=== ATUALIZAR NOME DO CLIENTE ===");
+        try {
+            String cpf = selecionarCliente();
+            if (cpf == null) return;
+
+            System.out.print("Digite o novo nome: ");
+            String novoNome = scanner.nextLine();
+
+            operacoesBancarias.atualizarNomeCliente(cpf, novoNome);
+            System.out.println("✅ Sucesso! O nome foi alterado para: " + novoNome);
+
+        } catch (BancoException e) {
+            System.out.println("Erro: " + e.getMessage());
         }
     }
 

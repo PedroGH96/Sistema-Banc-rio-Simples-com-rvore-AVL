@@ -116,6 +116,16 @@ public interface IOperacoesBancarias {
     void removerCliente(String cpf) throws ClienteNaoEncontradoException;
 
     /**
+     * Atualiza o nome de um cliente.
+     * @param cpf CPF do cliente
+     * @param novoNome Novo nome a ser atribuído
+     * @throws ClienteNaoEncontradoException se cliente não existe
+     * @throws DadosInvalidosException se novo nome for inválido
+     */
+    void atualizarNomeCliente(String cpf, String novoNome)
+            throws ClienteNaoEncontradoException, DadosInvalidosException;
+
+    /**
      * Retorna o repositório de contas (para relatórios).
      * Boa Prática: Expõe apenas a interface, não a implementação.
      *
@@ -129,4 +139,6 @@ public interface IOperacoesBancarias {
      * @return Repositório de clientes
      */
     repository.IRepositorioClientes getRepositorioClientes();
+
+
 }
