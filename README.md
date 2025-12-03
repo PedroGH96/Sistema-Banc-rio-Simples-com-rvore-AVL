@@ -1,12 +1,28 @@
 # Sistema Bancário Simples com Árvore AVL
 
-Este projeto é uma adaptação do sistema bancário original para atender aos requisitos da **Atividade da Unidade 3** da disciplina de Estruturas de Dados 2.
-
-A principal modificação foi a substituição da estrutura de dados de armazenamento de clientes (`ArrayList`) por uma **Árvore AVL** (`AVLTree`), garantindo o balanceamento automático e a complexidade de tempo $O(\log n)$ para as operações de busca, inserção e remoção de clientes.
-
 ## Autores / Grupo
-* @PedroGH96
-* @is-wenderson
+* Pedro Henrique de Araujo Alves
+* José Wenderson da Cunha Silva
+
+---
+
+## Sobre o Sistema
+
+Sistema bancário simples desenvolvido em Java aplicando boas práticas de programação e AVL. O sistema simula operações financeiras básicas de um banco com arquitetura robusta e código profissional.
+
+## Funcionalidades
+
+- Cadastro de Clientes com validação completa de CPF
+- Cadastro de Contas (Corrente e Poupança)
+- Depósito com validações de limite
+- Saque com verificação de saldo
+- Transferência entre contas
+- Consulta de Saldo
+- Aplicação de Rendimento em contas poupança
+- Listagem de Contas ordenada por saldo
+- Relatório de Consolidação detalhado
+- Atualizar o nome do cliente e
+- Visualizar AVL (Clientes)
 
 ## Requisitos da Atividade Atendidos
 
@@ -19,6 +35,8 @@ A principal modificação foi a substituição da estrutura de dados de armazena
 | **5. Visualização da Estrutura da Árvore** | ✅ Atendido | Foi adicionada a opção **"11. Visualizar AVL (Clientes)"** no menu, que exibe a representação hierárquica da árvore, mostrando o CPF, o Fator de Balanceamento (FB) e a Altura de cada nó. |
 | **6. Linguagem** | ✅ Atendido | O projeto está implementado em **Java**. |
 | **7. Diagrama UML (Mermaid)** | ✅ Atendido | O código Mermaid para o diagrama de classes está no arquivo `diagrama.md`. |
+
+---
 
 ## Como Rodar a Aplicação
 
@@ -64,20 +82,15 @@ banco/
 ├── src/
 │   ├── constants/
 │   ├── datastructure/
-│   │   ├── AVLNode.java      <- Novo: Nó da AVL
-│   │   └── AVLTree.java      <- Novo: Lógica da Árvore AVL
+│   │   ├── AVLNode.java      <- Nó da AVL
+│   │   └── AVLTree.java      <- Lógica da Árvore AVL
 │   ├── exception/
 │   ├── factory/
-│   ├── model/
+│   ├── model/                <- Entidades do domínio
 │   ├── repository/
-│   │   ├── IRepositorioClientes.java
-│   │   └── RepositorioClientes.java  <- Modificado para usar AVLTree
-│   ├── service/
-│   │   ├── IOperacoesBancarias.java
-│   │   └── BancoServico.java         <- Modificado para usar remoção de cliente
-│   ├── ui/
-│   │   └── Menu.java                 <- Modificado para incluir opções 10 e 11
-│   └── validator/
-├── diagrama.md             <- Novo: Código Mermaid para o Diagrama UML
-└── README.md               <- Este arquivo
+│   ├── service/              <- Lógica de negócio
+│   ├── ui/                   <- Interface do usuário
+│   └── validator/            <- Validadores
+├── diagrama.md               <- Código Mermaid para o Diagrama UML
+└── README.md             
 ```
