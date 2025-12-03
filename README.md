@@ -4,11 +4,15 @@ Este projeto é uma adaptação do sistema bancário original para atender aos r
 
 A principal modificação foi a substituição da estrutura de dados de armazenamento de clientes (`ArrayList`) por uma **Árvore AVL** (`AVLTree`), garantindo o balanceamento automático e a complexidade de tempo $O(\log n)$ para as operações de busca, inserção e remoção de clientes.
 
+## Autores / Grupo
+* @PedroGH96
+* @is-wenderson
+
 ## Requisitos da Atividade Atendidos
 
 | Requisito | Status | Detalhes da Implementação |
 | :--- | :--- | :--- |
-| **1. CRUD em 5 Entidades** | ✅ Atendido | O sistema possui 5 entidades principais com operações CRUD: `Cliente`, `Conta`, `ContaCorrente`, `ContaPoupanca` e `BancoServico` (que atua como entidade de transação/serviço). |
+| **1. CRUD em 5 Entidades** | ✅ Atendido | O sistema possui 5 entidades principais com operações CRUD (incluindo Update do campo nome do cliente): `Cliente`, `Conta`, `ContaCorrente`, `ContaPoupanca` e `BancoServico` (que atua como entidade de transação/serviço). |
 | **2. Utilizar Estrutura de Árvore (AVL)** | ✅ Atendido | A estrutura `AVLTree` foi implementada do zero em Java, com métodos para cálculo de altura, fator de balanceamento e as quatro rotações (LL, RR, LR, RL). |
 | **3. Inserção, Busca e Remoção na Árvore** | ✅ Atendido | As operações de `adicionar`, `buscarPorCpf` e `remover` de clientes no `RepositorioClientes` utilizam a lógica da `AVLTree`. |
 | **4. Estrutura com Sentido para o Sistema** | ✅ Atendido | A AVL é utilizada para armazenar os **Clientes**, usando o **CPF** como chave de ordenação. Isso otimiza a busca por clientes, uma operação central em um sistema bancário. |
@@ -47,7 +51,9 @@ Após iniciar a aplicação, você pode testar as seguintes funcionalidades que 
 
 1.  **Cadastrar Cliente (Opção 1):** Insira vários clientes com CPFs em ordem aleatória para ver a AVL se auto-balancear.
 2.  **Remover Cliente (Opção 10):** Remova um cliente, o que acionará a lógica de remoção e rebalanceamento da AVL.
-3.  **Visualizar AVL (Opção 11):** Use esta opção para ver a representação hierárquica da árvore de clientes, confirmando que o Fator de Balanceamento (FB) de cada nó está entre -1 e 1.
+3.  **Atualizar Nome (Opção 11):** Altere o nome de um cliente já cadastrado. Isso demonstra o "U" (Update) do CRUD, garantindo que a alteração de dados não corrompe a estrutura da árvore AVL.
+4.  **Visualizar AVL (Opção 12):** Use esta opção para ver a representação hierárquica da árvore de clientes, confirmando que o Fator de Balanceamento (FB) de cada nó está entre -1 e 1.
+
 
 ---
 

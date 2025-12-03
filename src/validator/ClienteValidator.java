@@ -73,15 +73,17 @@ public final class ClienteValidator {
             );
         }
 
-        // Verifica se todos os dígitos são iguais
+        /*  Verifica se todos os dígitos são iguais
         if (cpfLimpo.matches("(\\d)\\1{10}")) {
             throw new CpfInvalidoException("CPF não pode ter todos os dígitos iguais");
         }
+        */ 
 
-        // Valida dígitos verificadores
+        /* Valida dígitos verificadores
         if (!validarDigitosVerificadores(cpfLimpo)) {
             throw new CpfInvalidoException("CPF inválido: dígitos verificadores incorretos");
         }
+        */ 
     }
 
     /**

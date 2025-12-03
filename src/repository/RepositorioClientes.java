@@ -7,9 +7,8 @@ import datastructure.AVLTree;
 import java.util.List;
 import java.util.Optional;
 import java.util.ArrayList;
-import java.util.List;
 import java.util.Objects;
-import java.util.Optional;
+
 
 /**
  * Implementação do repositório de clientes.
@@ -34,7 +33,6 @@ public class RepositorioClientes implements IRepositorioClientes {
     }
 
     @Override
-    @Override
     public Optional<Cliente> buscarPorCpf(String cpf) {
         Objects.requireNonNull(cpf, "CPF não pode ser nulo");
 
@@ -43,7 +41,7 @@ public class RepositorioClientes implements IRepositorioClientes {
     }
 
     @Override
-    @Override
+  
     public boolean existe(String cpf) {
         return buscarPorCpf(cpf).isPresent();
     }
@@ -60,8 +58,6 @@ public class RepositorioClientes implements IRepositorioClientes {
         clientesTree.delete(cpf);
     }
 
-    @Override
-    @Override
     @Override
     public List<Cliente> listarTodos() {
         // A travessia in-order da AVL retorna a lista ordenada por CPF
