@@ -5,21 +5,29 @@ import model.Cliente;
 import java.util.Comparator;
 import java.util.ArrayList;
 import java.util.List;
-
 public class AVLTree {
+
     private AVLNode root;
+    
+    // Define que nossa árvore é organizada/ordenada pelo CPF do cliente
+    // Usamos isso para saber se um cliente vai para a Esquerda (menor) ou Direita (maior)
     private final Comparator<Cliente> comparator = Comparator.comparing(Cliente::getCpf);
 
     // --- Métodos Auxiliares ---
 
+    // Se o nó for nulo (não existe), a altura é 0
     private int height(AVLNode node) {
         return (node == null) ? 0 : node.height;
     }
 
+    // Calcula a Altura da Esquerda - Altura da Direita
+    // Se o resultado for 2 ou -2, significa que a árvore está torta e precisa girar
     private int getBalanceFactor(AVLNode node) {
         return (node == null) ? 0 : height(node.left) - height(node.right);
     }
 
+    // Mantém a árvore atualizada
+    // A altura de um nó é sempre 1 + a altura do seu maior filho
     private void updateHeight(AVLNode node) {
         if (node != null) {
             node.height = 1 + Math.max(height(node.left), height(node.right));
@@ -102,7 +110,6 @@ public class AVLTree {
         int balance = getBalanceFactor(node);
 
         // 4. Realiza as Rotações se desbalanceado
-
         // Caso LL (Left Left)
         if (balance > 1 && comparator.compare(cliente, node.left.cliente) < 0) {
             return rotateRight(node);
@@ -129,14 +136,14 @@ public class AVLTree {
     // --- Busca ---
 
     public Cliente search(String cpf) {
-        return search(root, cpf);
+        return search(root, cpf); // Começa a busca pelo topo (Raiz)
     }
 
     private Cliente search(AVLNode node, String cpf) {
         if (node == null) {
             return null;
         }
-
+        // Compara o CPF buscado com o CPF do nó atual.
         int compareResult = node.cliente.getCpf().compareTo(cpf);
 
         if (compareResult > 0) { // CPF do nó é maior que o procurado, ir para a esquerda
@@ -157,11 +164,13 @@ public class AVLTree {
     // --- Remoção ---
 
     public void delete(String cpf) {
-        root = delete(root, cpf);
+        root = delete(root, cpf); // Atualiza a raiz, pois ela pode mudar
     }
 
+    // Usado quando o nó a ser removido tem 2 filhos (precisamos do menor da direita)
     private AVLNode minValueNode(AVLNode node) {
         AVLNode current = node;
+        // Vai tudo para a esquerda para achar o menor valor
         while (current.left != null) {
             current = current.left;
         }
@@ -174,6 +183,7 @@ public class AVLTree {
             return null;
         }
 
+        // Compara o CPF buscado com o CPF do nó atual.
         int compareResult = node.cliente.getCpf().compareTo(cpf);
 
         if (compareResult > 0) { // CPF do nó é maior que o procurado, ir para a esquerda
