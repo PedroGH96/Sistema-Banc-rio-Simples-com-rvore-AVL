@@ -22,7 +22,7 @@ import ui.Menu;
  * Assertivas - Validação de invariantes
  *
  * @author Pedro Henrique de Araujo Alves
- * @author Samuel Evaristo de Fontes
+ * @author José Wenderson da Cunha Silva
  */
 public class Main {
 
